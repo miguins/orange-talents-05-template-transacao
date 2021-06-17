@@ -1,6 +1,7 @@
 package zup.ot5.lucasmiguins.transacao.transacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import zup.ot5.lucasmiguins.transacao.cartao.Cartao;
@@ -20,8 +21,7 @@ public class ListenerDeTransacao {
     public void ouvir(EventoDeTransacao eventoDeTransacao) {
         System.out.println(eventoDeTransacao);
 
-        Cartao cartaoExistente = cartaoRepository.findByNumeroAndEmail(eventoDeTransacao.getCartao().getId(),
-                                                                        eventoDeTransacao.getCartao().getEmail());
+        Cartao cartaoExistente = cartaoRepository.findByNumero(eventoDeTransacao.getCartao().getId());
         Estabelecimento estabelecimento = eventoDeTransacao.getEstabelecimento().toModel();
 
         if (cartaoExistente != null) {

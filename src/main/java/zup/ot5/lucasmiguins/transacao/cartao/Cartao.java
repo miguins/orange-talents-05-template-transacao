@@ -24,4 +24,12 @@ public class Cartao {
         this.numero = numero;
         this.email = email;
     }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }

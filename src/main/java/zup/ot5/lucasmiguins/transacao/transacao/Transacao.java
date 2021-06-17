@@ -45,7 +45,19 @@ public class Transacao {
         this.efetivadaEm = efetivadaEm;
     }
 
-    public void paraOCartao(Cartao cartao) {
-        this.cartao = cartao;
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public LocalDateTime getEfetivadaEm() {
+        return efetivadaEm;
     }
 }

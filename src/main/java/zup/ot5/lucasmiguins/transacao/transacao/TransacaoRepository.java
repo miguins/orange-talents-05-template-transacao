@@ -1,7 +1,13 @@
 package zup.ot5.lucasmiguins.transacao.transacao;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import zup.ot5.lucasmiguins.transacao.cartao.Cartao;
 
-public interface TransacaoRepository extends CrudRepository<Transacao, Long> {
+@Repository
+public interface TransacaoRepository extends JpaRepository<Transacao, Long> {
 
+    Page<Transacao> findByCartao(Cartao cartao, Pageable paginacao);
 }
